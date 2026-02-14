@@ -1,0 +1,126 @@
+:root {
+    --bg-color: #fdf6e3; /* 暖暖的米色，像真昼的毛衣 */
+    --calc-bg: #fffaf0;
+    --btn-bg: #fff;
+    --btn-hover: #fae1dd; /* 淡淡的粉色 */
+    --operator-bg: #ffd166; /* 像发色一样的金色 */
+    --equals-bg: #ef476f; /* 像眼睛一样的红色 */
+    --text-main: #5d5d5d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.calculator {
+    background-color: var(--calc-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 320px;
+}
+
+.header h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-main);
+    text-align: center;
+    font-weight: 700;
+}
+
+.display {
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.previous-operand {
+    color: #888;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+}
+
+.current-operand {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: var(--btn-bg);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.operator-btn {
+    background-color: var(--operator-bg);
+    color: #fff;
+}
+
+.function-btn {
+    background-color: #e0e0e0;
+}
+
+.equals-btn {
+    background-color: var(--equals-bg);
+    color: #fff;
+}
+
+.footer {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.footer a {
+    color: var(--equals-bg);
+    text-decoration: none;
+    font-weight: bold;
+}

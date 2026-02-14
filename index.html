@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahiru's Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="header">
+                <h3>Mahiru Calc 👱🏻‍♀️</h3>
+            </div>
+            <div class="display">
+                <div id="previous-operand" class="previous-operand"></div>
+                <div id="current-operand" class="current-operand">0</div>
+            </div>
+            <div class="buttons">
+                <button class="span-two function-btn" onclick="clearDisplay()">AC</button>
+                <button class="function-btn" onclick="deleteNumber()">DEL</button>
+                <button class="operator-btn" onclick="chooseOperation('÷')">÷</button>
+                
+                <button onclick="appendNumber('7')">7</button>
+                <button onclick="appendNumber('8')">8</button>
+                <button onclick="appendNumber('9')">9</button>
+                <button class="operator-btn" onclick="chooseOperation('×')">×</button>
+                
+                <button onclick="appendNumber('4')">4</button>
+                <button onclick="appendNumber('5')">5</button>
+                <button onclick="appendNumber('6')">6</button>
+                <button class="operator-btn" onclick="chooseOperation('-')">-</button>
+                
+                <button onclick="appendNumber('1')">1</button>
+                <button onclick="appendNumber('2')">2</button>
+                <button onclick="appendNumber('3')">3</button>
+                <button class="operator-btn" onclick="chooseOperation('+')">+</button>
+                
+                <button onclick="appendNumber('.')">.</button>
+                <button onclick="appendNumber('0')">0</button>
+                <button class="span-two equals-btn" onclick="compute()">=</button>
+            </div>
+        </div>
+        <div class="footer">
+            Made with ❤️ by <a href="https://github.com/fuckwhitebear">Mahiru Shiina</a> for Whitebear
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
