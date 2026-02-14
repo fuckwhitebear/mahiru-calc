@@ -1,22 +1,45 @@
 :root {
-    --bg-color: #fdf6e3; /* 暖暖的米色，像真昼的毛衣 */
-    --calc-bg: #fffaf0;
-    --btn-bg: #fff;
-    --btn-hover: #fae1dd; /* 淡淡的粉色 */
-    --operator-bg: #ffd166; /* 像发色一样的金色 */
-    --equals-bg: #ef476f; /* 像眼睛一样的红色 */
-    --text-main: #5d5d5d;
+    --bg-overlay: rgba(253, 246, 227, 0.7); /* 半透明米色 */
+    --calc-bg: rgba(255, 250, 240, 0.85);
+    --btn-bg: rgba(255, 255, 255, 0.9);
+    --btn-hover: #fae1dd;
+    --operator-bg: #ffd166;
+    --equals-bg: #ef476f;
+    --sci-bg: #118ab2;
+    --text-main: #4a4a4a;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', 'Noto Sans JP', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://files.catbox.moe/p8q68z.png'); /* 真昼的精美照片 */
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.2) 100%);
+    z-index: -1;
 }
 
 .container {
@@ -24,14 +47,30 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    z-index: 1;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.lang-switch button {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    background: var(--calc-bg);
 }
 
 .calculator {
     background-color: var(--calc-bg);
+    backdrop-filter: blur(10px);
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 320px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 340px;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .header h3 {
@@ -39,38 +78,38 @@ body {
     color: var(--text-main);
     text-align: center;
     font-weight: 700;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
 }
 
 .display {
-    background-color: #eee;
-    border-radius: 10px;
+    background-color: rgba(238, 238, 238, 0.8);
+    border-radius: 15px;
     padding: 15px;
     margin-bottom: 15px;
     text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 80px;
-    word-wrap: break-word;
-    word-break: break-all;
+    height: 90px;
+    overflow: hidden;
 }
 
 .previous-operand {
-    color: #888;
+    color: #777;
     font-size: 0.9rem;
     min-height: 1.2rem;
 }
 
 .current-operand {
-    color: #333;
-    font-size: 1.8rem;
+    color: #222;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 8px;
 }
 
 button {
@@ -78,49 +117,56 @@ button {
     outline: none;
     background-color: var(--btn-bg);
     color: var(--text-main);
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 button:hover {
     background-color: var(--btn-hover);
-    transform: translateY(-2px);
+    transform: scale(1.05);
 }
 
 button:active {
-    transform: translateY(0);
-}
-
-.span-two {
-    grid-column: span 2;
+    transform: scale(0.95);
 }
 
 .operator-btn {
     background-color: var(--operator-bg);
-    color: #fff;
+    color: #6d4c41;
 }
 
 .function-btn {
-    background-color: #e0e0e0;
+    background-color: #d1d1d1;
+}
+
+.sci-btn {
+    background-color: var(--sci-bg);
+    color: #fff;
+    font-size: 0.9rem;
 }
 
 .equals-btn {
     background-color: var(--equals-bg);
     color: #fff;
+    font-size: 1.5rem;
 }
 
 .footer {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 0.85rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
 }
 
 .footer a {
-    color: var(--equals-bg);
+    color: #ffd166;
     text-decoration: none;
     font-weight: bold;
 }
